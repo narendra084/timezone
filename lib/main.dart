@@ -1,117 +1,184 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    title: "Task",
+    home:ClockTask(),
+  ));
+}
+class Clock{
+  String  flag;
+  String  title;
+  String  desc;
+  String  time;
+
+  Clock({this.flag, this.title, this.desc, this.time});
+}
+ List<Clock> items= [
+   Clock(flag: 'add_alarm.png', title: 'india', desc: 'Today, +2HRS', time: '10:25'),
+   Clock(flag: 'add_alarm.png', title: 'London', desc: 'UK(GMT),+4HRS', time: '04:25'),
+   Clock(flag: 'add_alarm.png', title: 'Tokyo', desc: 'Japan (GMT+9)', time: '14:25'),
+   Clock(flag: 'add_alarm.png', title: 'Nepal', desc: 'Nepal (GMT+5:45)', time: '10:35')
+];
+
+class ClockTask extends StatefulWidget {
+  @override
+  _ClockTaskState createState() => _ClockTaskState();
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class _ClockTaskState extends State<ClockTask> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      backgroundColor: Colors.black38,
+      body: SafeArea(
+        child: Container(
+          height: size.height,
+          width: size.width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                "Clock",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "8:48",
+                    style: TextStyle(color: Colors.blue, fontSize: 50),
+                  ),
+                  Text(
+                    "pm",
+                    style: TextStyle(color: Colors.blue, fontSize: 30),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Wed,",
+                    style: TextStyle(
+                      color: Colors.white70,
+                    ),
+                  ),
+                  Text(
+                    "26,",
+                    style: TextStyle(
+                      color: Colors.white70,
+                    ),
+                  ),
+                  Text(
+                    "Aug,",
+                    style: TextStyle(
+                      color: Colors.white70,
+                    ),
+                  ),
+                  Icon(
+                    Icons.alarm,
+                    color: Colors.white70,
+                  ),
+                  Text(
+                    "Mon,",
+                    style: TextStyle(
+                      color: Colors.white70,
+                    ),
+                  ),
+                  Text(
+                    "8:00,",
+                    style: TextStyle(
+                      color: Colors.white70,
+                    ),
+                  ),
+                  Text(
+                    "am,",
+                    style: TextStyle(
+                      color: Colors.white70,
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Divider(
+                  color: Colors.grey,
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Expanded(
+                  child:Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: ListView.builder(
+                        itemBuilder:(context, int index){
+                          return Column(
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Container(
+                                    child: Row(
+                                      children: <Widget>[
+                                        Image.asset('assets/'+ items[index].flag
+                                        ),
+                                        SizedBox(
+                                          width: 12.0,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                                items[index].title,
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 14.0,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 3.0,
+                                            ),
+                                            Text(items[index].desc,
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(items[index].time,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24.0,
+                                  ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20.0,
+                              ),
+                            ],
+                          );
+                        },
+                      itemCount: items.length,
+                    ),
+                  ),
+              ),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
